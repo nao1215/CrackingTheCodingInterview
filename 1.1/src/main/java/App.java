@@ -2,10 +2,15 @@ import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
-        String[] strs =  {"aaa", "bduenpfafpa", "テスト", "あiうeお"};
+        String[] strs =  {"aaa", "bduenpfafpa", "テスト", "あiうeお",""};
+        String[] strs_for_book_method =  {"\\あ\\"};
         for (String str : strs) {
             System.out.printf("%sは、文字列に重複があるか：%s\n",
                                 str, isCharDuplicated(str));
+        }
+        for (String str : strs_for_book_method) {
+            System.out.printf("%sは、文字列に重複があるか：%s\n",
+                                str, isUniqueChars(str));
         }
     }
 
@@ -21,6 +26,11 @@ public class App {
         if(Objects.isNull(str)) {
             return false;
         }
+
+        if(str.equals("")) {
+            return false;
+        }
+
         String[] split = str.split("");
 
         for (int i=0; i< split.length; i++) {
@@ -44,17 +54,22 @@ public class App {
      * 計算量が少ないが、機能制約がある。
      */
     public static boolean isUniqueChars(String str) {
+        // 書籍には存在しないコード。NULLはfalseとして扱う。
+        if(Objects.isNull(str)) {
+            return false;
+        }
+
         if(str.length() > 128) {
             return false;
         }
 
         // 書籍には存在しないコード。ASCII以外の文字列はfalseとして扱う。
-        if (str.matches("^[^\\p{ASCII}].*")) {
+        if (str.matches("^.*[^\\p{ASCII}].*")) {
             return false;
         }
 
         boolean[] cahr_set = new boolean[128];
-        for(int i = 0; i<str.length(); i++) {
+        for(int i = 0; i < str.length(); i++) {
             int val = str.charAt(i);
 
             if(cahr_set[val]) {

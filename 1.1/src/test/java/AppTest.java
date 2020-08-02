@@ -7,20 +7,80 @@ import static org.junit.Assert.*;
 
 public class AppTest {
     @Test public void testIsCharDuplicated() {
+        /*  [テスト観点]
+         *  1. NULL
+         *  2. 空文字
+         *  3. 英字（小文字）の重複あり
+         *  4. 英字の小文字・大文字の混合（大文字と小文字は同じ英字）、重複なし
+         *  5. 英字(小文字・大文字)、記号の重複なし
+         */
+        assertFalse(App.isCharDuplicated(null));
+        assertFalse(App.isCharDuplicated(""));
         assertTrue(App.isCharDuplicated("aaa"));
         assertFalse(App.isCharDuplicated("aABbCc"));
         assertFalse(App.isCharDuplicated("abcdefghijklmnopqrstuvwxyz1234567890!\"#$%&'()~=|-^[@`{]:;+*}/.,<>\\?_ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-        assertTrue(App.isCharDuplicated("あいうえおあ"));
+        /*  [テスト観点]
+         *  6. 日本語、重複なし
+         *  7. 日本語、重複あり
+         *  8. 日本語、英字の混合、重複なし
+         *  9. 日本語、英字の混合、日本語の重複あり
+         *  10. 日本語、英字の混合、英字の重複あり
+         */
+        assertFalse(App.isCharDuplicated("あいうえお"));
+        assertTrue(App.isCharDuplicated("あいうえあ"));
         assertFalse(App.isCharDuplicated("あiうeおa"));
+        assertTrue(App.isCharDuplicated("あiうeおaあ"));
+        assertTrue(App.isCharDuplicated("あiうeおaかi"));
+        /*  [テスト観点]
+         *  11. 記号と英字、記号の重複あり
+         *  12. 記号と日本語、記号の重複あり
+         *  13. 記号と英字と日本語、記号の重複あり
+         *  14. 記号と英字と日本語、英字の重複あり
+         *  15. 記号と英字と日本語、日本語の重複あり
+         */
         assertTrue(App.isCharDuplicated(":a:"));
+        assertTrue(App.isCharDuplicated("\\あ\\"));
+        assertTrue(App.isCharDuplicated("+aヵ+"));
+        assertTrue(App.isCharDuplicated(".ZヱZ"));
+        assertTrue(App.isCharDuplicated("変*a変"));
     }
 
     @Test public void testIsUniqueChars() {
+        /*  [テスト観点]
+         *  1. NULL
+         *  2. 空文字
+         *  3. 英字（小文字）の重複あり
+         *  4. 英字の小文字・大文字の混合（大文字と小文字は同じ英字）、重複なし
+         *  5. 英字(小文字・大文字)、記号の重複なし
+         */
+        assertFalse(App.isUniqueChars(null));
+        assertTrue(App.isUniqueChars(""));
         assertFalse(App.isUniqueChars("aaa"));
         assertTrue(App.isUniqueChars("aABbCc"));
         assertTrue(App.isUniqueChars("abcdefghijklmnopqrstuvwxyz1234567890!\"#$%&'()~=|-^[@`{]:;+*}/.,<>\\?_ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-        assertFalse(App.isUniqueChars("あいうえおあ"));
+        /*  [テスト観点]
+         *  6. 日本語、重複なし
+         *  7. 日本語、重複あり
+         *  8. 日本語、英字の混合、重複なし
+         *  9. 日本語、英字の混合、日本語の重複あり
+         *  10. 日本語、英字の混合、英字の重複あり
+         */
+        assertFalse(App.isUniqueChars("あいうえお"));
+        assertFalse(App.isUniqueChars("あいうえあ"));
         assertFalse(App.isUniqueChars("あiうeおa"));
+        assertFalse(App.isUniqueChars("あiうeおaあ"));
+        assertFalse(App.isUniqueChars("あiうeおaかi"));
+        /*  [テスト観点]
+         *  11. 記号と英字、記号の重複あり
+         *  12. 記号と日本語、記号の重複あり
+         *  13. 記号と英字と日本語、記号の重複あり
+         *  14. 記号と英字と日本語、英字の重複あり
+         *  15. 記号と英字と日本語、日本語の重複あり
+         */
         assertFalse(App.isUniqueChars(":a:"));
+        assertFalse(App.isUniqueChars("\\あ\\"));
+        assertFalse(App.isUniqueChars("+aヵ+"));
+        assertFalse(App.isUniqueChars(".ZヱZ"));
+        assertFalse(App.isUniqueChars("変*a変"));
     }
 }
