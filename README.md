@@ -1,12 +1,13 @@
 # Cracking The Coding Interview
 
-本レポジトリは、Cracking the Coding Interview: 189 Programming Questions and Solutions（邦題：世界で闘うプログラミング力を鍛える本 ~コーディング面接 189 問とその解法~）の回答コード（自作）を残しています。
+本レポジトリは、Cracking the Coding Interview: 189 Programming Questions and Solutions（邦題：世界で闘うプログラミング力を鍛える本 コーディング面接 189 問とその解法）の回答コード（自作）を残しています。
 Cracking the Coding Interview は、トップ IT 企業に就職するための「アルゴリズム・コーディング力・設計力」を養うための問題集です。
 
 問題文は、本レポジトリに含まれていないため、前述の書籍にて確認してください。<br>
 問題番号ごとに本レポジトリにディレクトリ（例：1.1）が作成してあり、その中には Gradle で作成したプロジェクトと回答コードが存在します。<br>
 「回答に対する私の考え」や「Big-O 記法による計算量」は、ソースコード中のコメントに記載してあります。
 
+'''
 [ディレクトリ構成]
 Root Directory<br>
 ├── 1.1 　　　※ 問題番号<br>
@@ -20,6 +21,7 @@ Root Directory<br>
 ：<br>
 ├── LICENSE<br>
 └── README.md<br>
+'''
 
 # 開発環境・使用言語
 
@@ -33,9 +35,9 @@ Root Directory<br>
 | ビルドシステム            | Gradle(Version 6.5.1)                |
 | Unit テストフレームワーク | JUnit（Version 4.13）                |
 
-- Gradle のインストールは、Debian パッケージマネージャ（apt）経由では相当古い Version しか取得できないため、公式サイト（https://gradle.org/releases/）から取得した方が好ましいです。
+- Gradle のインストールは、Debian パッケージマネージャ（apt）経由では相当古い Version しか取得できないため、公式サイト（https://gradle.org/releases/） から取得した方が好ましいです。
 
-- Java のインストールは、SDKMAN（https://sdkman.io/）がオススメです。Java Version の切り替えが簡単にできます。
+- Java のインストールは、SDKMAN（https://sdkman.io/） がオススメです。Java Version の切り替えが簡単にできます。
 
 - 開発には Visual Studio Code を用いたため、IDE（例：IntelliJ、eclipse）でのビルドは未確認です。
 
