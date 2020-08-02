@@ -7,21 +7,21 @@ Cracking the Coding Interview は、トップ IT 企業に就職するための�
 問題番号ごとに本レポジトリにディレクトリ（例：1.1）が作成してあり、その中には Gradle で作成したプロジェクトと回答コードが存在します。<br>
 「回答に対する私の考え」や「Big-O 記法による計算量」は、ソースコード中のコメントに記載してあります。
 
-'''
+```
 [ディレクトリ構成]
-Root Directory<br>
-├── 1.1 　　　※ 問題番号<br>
-│ ├── build.gradle<br>
-│ ├── gradle<br>
-│ ├── gradlew<br>
-│ ├── gradlew.bat<br>
-│ ├── settings.gradle<br>
-│ └── src 　　※ 問題の回答とテストコードがあるディレクトリ<br>
-├── 1.2<br>
-：<br>
-├── LICENSE<br>
-└── README.md<br>
-'''
+Root Directory
+├── 1.1 　　　※ 問題番号
+│ ├── build.gradle
+│ ├── gradle
+│ ├── gradlew
+│ ├── gradlew.bat
+│ ├── settings.gradle
+│ └── src 　　※ 問題の回答とテストコードがあるディレクトリ
+├── 1.2
+：
+├── LICENSE
+└── README.md
+```
 
 # 開発環境・使用言語
 
