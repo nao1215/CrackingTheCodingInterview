@@ -1,11 +1,11 @@
 # Cracking The Coding Interview
 
-本レポジトリは、Cracking the Coding Interview: 189 Programming Questions and Solutions（邦題：世界で闘うプログラミング力を鍛える本 コーディング面接 189 問とその解法）の回答コード（自作）を残しています。
+本レポジトリは、Cracking the Coding Interview: 189 Programming Questions and Solutions（邦題：世界で闘うプログラミング力を鍛える本 コーディング面接 189 問とその解法）の解答コード（自作）を残しています。
 Cracking the Coding Interview は、トップ IT 企業に就職するための「アルゴリズム・コーディング力・設計力」を養うための問題集です。
 
 問題文は、本レポジトリに含まれていないため、前述の書籍にて確認してください。<br>
 問題番号ごとに本レポジトリにディレクトリ（例：1.1）が作成してあり、その中には Gradle で作成したプロジェクトと回答コードが存在します。<br>
-「回答に対する私の考え」や「Big-O 記法による計算量」は、ソースコード中のコメントに記載してあります。
+「解答に対する私の考え」や「Big-O 記法による計算量」は、ソースコード中のコメントに記載してあります。
 
 ```
 [ディレクトリ構成]
@@ -16,7 +16,7 @@ Root Directory
 │ ├── gradlew
 │ ├── gradlew.bat
 │ ├── settings.gradle
-│ └── src 　　※ 問題の回答とテストコードがあるディレクトリ
+│ └── src 　　※ 問題の解答とテストコードがあるディレクトリ
 ├── 1.2
 ：
 ├── LICENSE
@@ -50,10 +50,10 @@ Root Directory
 $ git clone https://github.com/nao1215/CrackingTheCodingInterview.git
 $ cd CrackingTheCodingInterview/1.1
 
-(注釈)：回答コードを実行
+(注釈)：解答コードを実行
 $ gradle run
 
-(注釈)：回答コード向けのユニットテストを実行
+(注釈)：解答コード向けのユニットテストを実行
 $ gradle test
 ```
 

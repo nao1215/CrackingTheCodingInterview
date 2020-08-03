@@ -15,11 +15,14 @@ public class App {
         "あいう", "いうあ", isAnagram("あいう", "いうあ"));
         System.out.printf("%sと%sはアナグラム：%s\n",
         "123456789", "987654321", isAnagram("123456789", "987654321"));
+        System.out.printf("%sと%sはアナグラム：%s\n",
+        "[]:", "@[]", permutation("[]:", "@[]"));
     }
 
-    /* [自作の回答]
+    /* [自作の解答]
      * 引数で与えた文字列str1、str2を比較し、
      * str1がstr2のアナグラムである場合はtrue、アナグラムではない場合はfalseを返す。
+     * 方法論としては、書籍の解答1と同じ。
      *
      * 計算量はO(nlog(n))。
      * 総計算量は、文字列のソート部（sortStringInAsc()）の計算量に依存するが、
@@ -69,5 +72,49 @@ public class App {
         Arrays.sort(chars);
         String sortedStr = new String(chars);
         return sortedStr;
+    }
+
+    /* [書籍の解答2]
+     * 文字コードをASCIIと仮定したコード。
+     * アナグラムの場合は２つの文字列は同じ文字から構成されているので、
+     * 同じ文字の数を数える事でアナグラムかどうかを判定する。
+     */
+    public static boolean permutation(String s, String t) {
+        // 書籍には存在しないコード。NULLチェック
+        if(Objects.isNull(s) || Objects.isNull(t)) {
+            return false;
+        }
+
+        if(s.length() != t.length()) {
+            return false;
+        }
+
+        // 書籍には存在しないコード。ASCII以外の文字列はfalseとして扱う。
+        if (s.matches("^.*[^\\p{ASCII}].*") || t.matches("^.*[^\\p{ASCII}].*")) {
+            return false;
+        }
+
+        /* ASCIIの場合、charAt()が返す値は0〜127に限定される。
+         * 文字列1（s）で登場した文字はカウント（インクリメント）され、
+         * letters配列に保持される（文字毎に登場数が保持される）。
+         * 文字列2（t）で登場した文字は、letters配列の値をデクリメントする事で
+         * カウントする。
+         *
+         * 文字列1と文字列2がアナグラムの場合、letters配列の値は全て0になる。
+         * それ以外の場合、letters配列の値が負になった段階（文字列2にしか登場しない文字が
+         * 出た段階）で、処理を中断する。
+         */
+        int[] letters = new int[128]; // ASCIIと仮定。ASCIIについては問題1.1参照。
+        for(int i = 0; i<s.length(); i++) {
+            letters[s.charAt(i)]++;
+        }
+
+        for(int i = 0; i<t.length(); i++) {
+            letters[t.charAt(i)]--;
+            if(letters[t.charAt(i)] < 0) {
+                return false;
+            }
+        }
+        return true; // 負（正）の値になる文字がない。
     }
 }

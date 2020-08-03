@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
+    @Test public void testIsAnagram() {
         /* [テスト観点]
          * 1. 片方の引数がnull
          * 2. null比較
@@ -35,5 +35,36 @@ public class AppTest {
          * 11. 英字、記号、日本語のアナグラム
          */
         assertTrue(App.isAnagram("あ*a", "a*あ"));
+    }
+
+    @Test public void testPermutation() {
+        /* [テスト観点]
+         * 1. 片方の引数がnull
+         * 2. null比較
+         * 3. 英字でのアナグラム
+         * 4. 空文字の比較
+         * 5. 記号のアナグラム
+         */
+        assertFalse(App.permutation(null, "test"));
+        assertFalse(App.permutation(null, null));
+        assertTrue(App.permutation("test", "tset"));
+        assertTrue(App.permutation("", ""));
+        assertTrue(App.permutation("+*}", "}*+"));
+        /* [テスト観点]
+         * 6. アナグラム可能だが、余分な文字が存在
+         * 7. 数値でのアナグラム
+         * 8. 記号のアナグラムではない
+         * 9. 日本語のアナグラム
+         * 10. 日本語のアナグラムではない
+         */
+        assertFalse(App.permutation("tsetp", "test"));
+        assertTrue(App.permutation("123456789", "987654321"));
+        assertFalse(App.permutation("[]:", "@[]"));
+        assertFalse(App.permutation("あいうえお", "うえおいあ"));
+        assertFalse(App.permutation("あいうえお", "かきくけこ"));
+        /* [テスト観点]
+         * 11. 英字、記号、日本語のアナグラム
+         */
+        assertFalse(App.permutation("あ*a", "a*あ"));
     }
 }
