@@ -103,6 +103,7 @@ public class App {
          * 文字列1と文字列2がアナグラムの場合、letters配列の値は全て0になる。
          * それ以外の場合、letters配列の値が負になった段階（文字列2にしか登場しない文字が
          * 出た段階）で、処理を中断する。
+         * 計算量は、O(c)。cは、文字数。
          */
         int[] letters = new int[128]; // ASCIIと仮定。ASCIIについては問題1.1参照。
         for(int i = 0; i<s.length(); i++) {
